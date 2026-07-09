@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body class="bg-white">
+
+
+<nav  class="fixed top-0 left-0 w-full bg-black h-20 flex items-center justify-between px-8 z-50">
+
+    <p class=" text-white">
+        <span class="text-green-500 text-xm md:text-3xl font-bold">§</span>  <span class="font-bold text-xm md:text-2xl ">enveto</span>  <span class="text-with ">Market</span>
+         
+    </p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button
+            type="submit"
+            class="bg-green-700 hover:bg-green-300 text-white px-5 py-2 rounded-lg">
+            Buy Now
+        </button>
+    </form>
+
+</nav>
+
+
+<div class="pt-28">
+
+    
+    <img id ="nav"
+        src="https://ahmad.works/alia/wp-content/uploads/2018/08/circleimage_r.png"
+        class="w-40 h-40 rounded-full mx-auto">
+
+</div>
+
+
+<div class = "flex justify-center items-center gap-8 mt-10 mb-5 justify-between"> 
+
+
+<i class="fa-brands fa-facebook hover:text-red-400"></i>
+<i class="fa-brands fa-instagram hover:text-red-400"></i>
+<i class="fa-brands fa-x-twitter hover:text-red-400"></i>
+<i class="fa-brands fa-youtube hover:text-red-400"></i>
+<i class="fa-brands fa-tiktok hover:text-red-400"></i>
+<i class="fa-brands fa-github hover:text-red-400"></i>
+
+</div>
+
+
+
+
+
+<div class="max-w-5xl mx-auto px-6 pt-20 py-12">
+
+  <nav class="w-full py-3 sticky top-20 z-40 bg-white mx-auto flex mb-4 items-center justify-between border-t border-b border-gray-200 ">
+
+
+<div class="text-xl md:text-2xl font-bold tracking-tight">
+Alia Stone<span class="text-pink-500">.</span>
+</div>
+
+
+<ul class="hidden lg:flex items-center gap-12 uppercase text-sm tracking-widest text-gray-700">
+<li><a href="#" class="hover:text-black transition">Homes</a></li>
+<li><a href="#" class="hover:text-black transition">Posts Formats</a></li>
+<li><a href="#" class="hover:text-black transition">Pages</a></li>
+<li><a href="#" class="hover:text-black transition">Shop</a></li>
+<li><a href="#" class="hover:text-black transition">Purchase Now!</a></li>
+
+
+
+</ul>
+
+<div class="flex items-center gap-8 text-xl text-gray-700">
+
+<button>
+<i class="fa-solid fa-magnifying-glass"></i>
+</button>
+
+<button class="relative">
+<i class="fa-solid fa-bag-shopping"></i>
+</button>
+
+<button>
+<i class="fa-solid fa-bars"></i>
+</button>
+
+</div>
+
+</nav>
+
+{% for art in article %}
+
+<div class="bg-white overflow-hidden mb-10">
+
+    {% if art.images %}
+        <img
+            src="{{ art.images }}"
+            alt="{{ art.titre }}"
+            class="w-full h-35 md:h-96 object-cover">
+    {% endif %}
+
+
+    
+
+    <div class="md:p-8 md:px-30 mb-10">
+        <h2 class="text-xl md:text-3xl font-bold ">
+            {{ art.titre }}
+        </h2>
+        <div class="flex md:items-center mt-6">
+          
+
+            <img
+                src="https://ahmad.works/alia/wp-content/uploads/2018/08/beautiful-woman-with-curly-hair-laughing-PNKWDEG-100x100.jpg"
+                class="w-12 h-12 rounded-full">
+
+            <div class="ml-4">
+                <p class="font-bold">
+                    {{ art.auteur }}
+                </p>
+                
+                <p class="text-gray-500 text-sm">
+                    {{ art.date_publication }}
+                </p>
+            
+            </div>
+
+        </div>
+
+        
+
+
+
+
+        <p class="mt-6 text-gray-700 leading-8">
+            {{ art.contenu|truncatechars:400 }}
+        </p>
+
+      <div class ="grid md:flex justify-between py-3 mt-6 ">
+        <a
+            href="{% url 'lire' art.id %}"
+            class="inline-block font-bold ">
+
+            <span class="text-black">Continue reading</span> <span class ="hover:text-red-500 font-bold text-gray-200">.</span><span class ="hover:text-red-500 font-bold text-gray-100">.</span><span class ="hover:text-red-500 font-bold text-gray-100">.</span><span class ="hover:text-red-500 font-bold text-gray-200">.</span><span class ="hover:text-red-500 font-bold text-gray-200">.</span><span class ="hover:text-red-500 font-bold text-gray-100">.</span><span class ="hover:text-red-500 font-bold text-gray-100">.</span><span class ="hover:text-red-500 font-bold text-gray-200">.</span><span class ="hover:text-red-500 font-bold text-gray-200">.</span> 
+
+        </a>
+      <div class="text-gray-300">
+        <i class="fa-brands fa-facebook hover:text-black"></i>
+        
+<i class="fa-brands fa-instagram hover:text-black"></i>
+<i class="fa-brands fa-x-twitter hover:text-black"></i>
+<i class="fa-brands fa-youtube hover:text-black"></i>
+<i class="fa-brands fa-tiktok hover:text-black"></i>
+<i class="fa-brands fa-github hover:text-black"></i>
+
+
+      </div>
+    </div>
+
+</div>
+
+      {% endfor %}
+
+</div>
+
+
+    
+
+      <p class ="border-t border-gray-400 " >
+
+        © 2026 Enveto Market — Tous droits réservés
+      </p>
+
+   
+    <a href = "#nav" class="fixed bottom-40 right-6 bg-red-500 hover:bg-red-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition duration-300
+">
+↑
+</a>
+<nav class="fixed left-0 right-0 z-50 mx-w-5xl mx-auto px-10 md:px-50 bottom-0 flex items-center shadow-md w-full  bg-white justify-between">
+
+  <div class="text-xm md:text-3xl font-bold">
+      Recent<br>Stories
+    
+  </div>
+
+
+
+
+    <div class="flex hidden md:flex lg:flex ">
+      <img src="https://th.bing.com/th/id/OIP.FtLAGpXl-g5ZJb4rr3lixgHaE7?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
+          class="w-18 h-18 rounded-full object-cover border-2 border-white -ml-3 first:ml-0 transition-all duration-300 hover:-translate-x-2 hover:border-4 hover:scale-110 hover:shadow-red-500 hover:border-red-600 ">
+
+      <img src="https://m.media-amazon.com/images/S/amzn-author-media-prod/lm13rkcreprh5ih2ppdnv97gf5.jpg"
+          class="w-18 h-18 rounded-full object-cover border-2 border-white -ml-3 transition-all duration-300 hover:-translate-x-2 hover:scale-110 hover:z-10 hover:border-4 hover:border-red-600 ">
+
+      <img src="https://tse4.mm.bing.net/th/id/OIP.U7sVEkIaqVNEJ6Sw5i9aoQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+          class="w-18 h-18 rounded-full object-cover border-2 border-white -ml-3 transition-all duration-300 hover:-translate-x-2 hover:scale-110 hover:z-10 hover:border-4 hover:border-red-600 ">
+
+      <img src="https://tse1.explicit.bing.net/th/id/OIP.ti7V5nj7ZBsg5INR5l6PPgHaFc?r=0&pid=ImgDet&w=180&h=131&c=7&o=7&rm=3"
+          class="w-18 h-18 rounded-full object-cover border-2 border-white -ml-3 transition-all duration-300 hover:-translate-x-2 hover:scale-110 hover:z-10 hover:border-4 hover:border-red-600 ">
+    </div>  
+  </nav>
+</div>
+
+</body>
+</html>
